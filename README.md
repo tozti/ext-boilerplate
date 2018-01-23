@@ -8,6 +8,8 @@ This package provides a basic file structure to start coding your own tozti exte
 To use this file structure for your extension, simply download this repository:
 ```bash
 wget https://github.com/tozti/tozti-boilerplate/archive/master.zip
+unzip master.zip
+rm master.zip
 mv tozti-boilerplate-master tozti-awesome
 ```
 
@@ -37,5 +39,5 @@ In practice, it means that you musn't run `npm install`. Instead, you run the fo
 ```bash
 npm install -g tozti/tozti-gulp
 npm install gulp
-npm link 
+npm link tozti-gulp
 ```
