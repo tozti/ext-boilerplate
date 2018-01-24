@@ -12,6 +12,7 @@
     "build": "gulp build",
     "watch": "gulp watch",
     "release": "NODE_ENV=production gulp build",
+    "package": "npm run release && tar -zcvf `basename $PWD`.tar.gz * --exclude=src --exclude=assets --exclude=node_modules --exclude=.git",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Romain Liautaud <romain.liautaud@ens-lyon.fr>",
