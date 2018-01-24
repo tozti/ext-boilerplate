@@ -6,7 +6,7 @@
   "dependencies": {},
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-tozti": "tozti/tozti-gulp"
+    "tozti-gulp": "tozti/tozti-gulp"
   },
   "scripts": {
     "build": "gulp build",
