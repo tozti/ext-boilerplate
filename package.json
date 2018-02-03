@@ -1,26 +1,30 @@
 {
-  "name": "tozti-hello-world",
-  "version": "0.0.1",
-  "description": "A simple Hello World extension for tozti.",
+  "name": "tozti-extension",
+  "version": "1.0.0",
+  "description": "A common boilerplate for tozti extensions.",
   "main": "dist/js/index.js",
-  "scripts": {
-    "build": "webpack --progress --hide-modules"
-  },
-  "keywords": [
-    "tozti"
-  ],
-  "license": "AGPL-3.0",
+  "dependencies": {},
   "devDependencies": {
-    "webpack": "^3.9.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.0",
     "babel-preset-stage-3": "^6.24.1",
     "css-loader": "^0.28.7",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.4",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
     "vue-loader": "^13.0.5",
-    "vue-template-compiler": "^2.4.4"
-  }
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^3.9.0"
+  },
+  "scripts": {
+    "build": "webpack --progress --hide-modules",
+    "watch": "webpack --watch --progress --hide-modules",
+    "release": "NODE_ENV=production npm run build",
+    "package": "npm run release && tar -zcvf `basename $PWD`.tar.gz * --exclude=src --exclude=assets --exclude=node_modules --exclude=.git",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Romain Liautaud <romain.liautaud@ens-lyon.fr>",
+  "license": "AGPL-3.0"
 }

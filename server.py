@@ -1,3 +1,3 @@
 MANIFEST = {
-    'includes': ['build.js', 'css/style.css'],
+    'includes': ['bundle.js', 'bundle.css'],
 }
