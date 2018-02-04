@@ -1,19 +1,20 @@
 const path = require('path')
 const webpack = require('webpack')
-const Extract = require('extract-text-webpack-plugin')
+const extract = require('extract-text-webpack-plugin')
 
-const development = process.env.NODE_ENV === 'development'
+const isDev = (process.env.NODE_ENV === 'development')
 
-const extractSass = new Extract({
-    filename: "[name].[contenthash].css",
-    disable: development
+
+const extractSass = new extract({
+    filename: '[name].css',
+    disable: isDev
 })
 
 const cssLoader = {
   loader: 'css-loader',
   options: {
-    minimize: !development,
-    sourceMap: development
+    minimize: !isDev,
+    sourceMap: isDev
   }
 }
 
@@ -24,33 +25,40 @@ const fileLoader = {
   }  
 }
 
+
 module.exports = {
-  entry: './src/index.js',
+  entry: [
+    './src/index.js', 
+    './assets/sass/style.scss',
+    'multi-entry-loader?include=./assets/img/**.*!',
+    'multi-entry-loader?include=./assets/fonts/**.*!',
+  ],
   output: {
     path: path.resolve(__dirname, './dist'),
     filename: 'bundle.js'
   },
   plugins: [
-    new Extract('bundle.css')
+    new extract('bundle.css'),
+    new webpack.optimize.UglifyJsPlugin({minimize: !isDev})
   ],
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: Extract.extract([cssLoader]),
+        use: extract.extract([cssLoader]),
       },
       {
         test: /\.scss$/,
-        use: extractor.extract({
+        use: extract.extract({
           fallback: 'vue-style-loader',
-          use: cssLoader, 'sass-loader'],
+          use: [cssLoader, 'sass-loader'],
         })
       },
       {
         test: /\.sass$/,
-        use: Extract.extract({
+        use: extract.extract({
           fallback: 'vue-style-loader',
-          use: cssLoader, 'sass-loader?indentedSyntax'],
+          use: [cssLoader, 'sass-loader?indentedSyntax'],
         })
       },
       {
