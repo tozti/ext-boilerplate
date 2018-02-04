@@ -23,7 +23,7 @@
   "scripts": {
     "build": "webpack --progress --hide-modules",
     "watch": "webpack --watch --progress --hide-modules",
-    "release": "NODE_ENV=production npm run build",
+    "release": "webpack --progress --hide-modules --optimize-minimize",
     "package": "npm run release && tar -zcvf `basename $PWD`.tar.gz * --exclude=src --exclude=assets --exclude=node_modules --exclude=.git",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
