@@ -21,11 +21,11 @@ module.exports = {
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'build.js'
   },
 
   plugins: [
-    new extract('bundle.css'),
+    new extract('css/style.css'),
   ],
   module: {
     rules: [
