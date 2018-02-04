@@ -16,15 +16,14 @@ module.exports = {
   entry: [
     './src/index.js',
     './assets/sass/style.scss',
-    'multi-entry-loader?include=./assets/img/**.*!',
-    'multi-entry-loader?include=./assets/fonts/**.*!',
+    // 'multi-entry-loader?include=./assets/img/**.*!',
+    // 'multi-entry-loader?include=./assets/fonts/**.*!',
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
 
-  // Extract the CSS files from 
   plugins: [
     new extract('bundle.css'),
   ],
@@ -53,6 +52,10 @@ module.exports = {
         loader: 'vue-loader',
         options: {
           loaders: {
+            'css': extract.extract({
+              fallback: 'vue-style-loader',
+              use: ['css-loader'],
+            }),
             'scss': extract.extract({
               fallback: 'vue-style-loader',
               use: ['css-loader', 'sass-loader'],

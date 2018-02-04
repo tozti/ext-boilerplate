@@ -1,7 +1,7 @@
 # tozti-boilerplate
 *A common boilerplate for tozti extensions.*
 
-This package provides a basic file structure to start coding your own tozti extension. It comes pre-configured with [Webpack](https://webpack.js.org/), and supports 
+This package provides a basic file structure to start coding your own tozti extension. It comes pre-configured with [Webpack](https://webpack.js.org/), and supports ES6 transpiling using Babel, SASS and image optimisation.
 
 ## Getting started.
 
